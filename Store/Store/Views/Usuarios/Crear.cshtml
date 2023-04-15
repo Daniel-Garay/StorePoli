@@ -17,8 +17,8 @@
             <input type="text" class="form-control" id="PrimerNombre">
         </div>
 
-        <label for="celular" class="col-sm-1 col-form-label textAlignelabel">Celular</label>
-        <div class="col-sm-3">
+        <label for="celular" class="col-sm-2 col-form-label textAlignelabel">Celular</label>
+        <div class="col-sm-4">
             <input type="text" class="form-control" id="celular">
         </div>
     </div>
@@ -28,8 +28,8 @@
             <input type="text" class="form-control" id="SegundoNombre">
         </div>
 
-        <label for="direccion" class="col-sm-1 col-form-label textAlignelabel">Dirección</label>
-        <div class="col-sm-3">
+        <label for="direccion" class="col-sm-2 col-form-label textAlignelabel">Dirección</label>
+        <div class="col-sm-4">
             <input type="text" class="form-control" id="direccion">
         </div>
     </div>
@@ -39,8 +39,8 @@
             <input type="text" class="form-control" id="PrimerApellido">
         </div>
 
-        <label for="TelFijo" class="col-sm-1 col-form-label textAlignelabel">Tel Fijo</label>
-        <div class="col-sm-3">
+        <label for="TelFijo" class="col-sm-2 col-form-label textAlignelabel">Tel Fijo</label>
+        <div class="col-sm-4">
             <input type="text" class="form-control" id="TelFijo">
         </div>
     </div>
@@ -51,11 +51,83 @@
             <input type="text" class="form-control" id="SegundoApellido">
         </div>
 
-        <label for="email" class="col-sm-1 col-form-label textAlignelabel">Email</label>
-        <div class="col-sm-3">
+        <label for="email" class="col-sm-2 col-form-label textAlignelabel">Email</label>
+        <div class="col-sm-4">
             <input type="email" class="form-control" id="email">
         </div>
     </div>
+
+    <div class="row offset-md-2 paddingRowTop">
+        <label for="document" class="col-sm-2 col-form-label textAlignelabel">Documento</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="document">
+        </div>
+
+        <label for="tipoDeDocumento" class="col-sm-2 col-form-label textAlignelabel">Tipo de documento</label>
+        <div class="col-sm-4">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="1">Cedula</option>
+                <option value="2">Pasaporte</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="row offset-md-2 paddingRowTop">
+
+        <label for="Genero" class="col-sm-2 col-form-label textAlignelabel">Genero</label>
+        <div class="col-sm-3">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+            </select>
+        </div>
+
+        <label for="fechaDeNacimiento" class="col-sm-2 col-form-label textAlignelabel">Fecha de Nacimiento</label>
+        <div class="col-sm-4">
+            <input type="date" class="form-control" id="fechaDeNacimiento">
+        </div>
+
+    </div>
+
+    <div class="row offset-md-2 paddingRowTop">
+        <label for="usuario" class="col-sm-2 col-form-label textAlignelabel">Nombre de usuario</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="usuario">
+        </div>
+
+        <label for="contrasena" class="col-sm-2 col-form-label textAlignelabel">Contraseña</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" id="contrasena">
+        </div>
+    </div>
+
+    <div class="row offset-md-2 paddingRowTop">
+        <label for="confirmarcontrasena" class="col-sm-2 col-form-label textAlignelabel">Confirmación Contraseña</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control" id="confirmarcontrasena">
+        </div>
+
+    </div>
+
+
+
+
+    <div class="row offset-md-6  spaceSite">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-success btn-lg">Guardar</button>
+        </div>
+
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger btn-lg">Cancelar</button>
+        </div>
+
+    </div>
+
+
+
 
 </form>
 
