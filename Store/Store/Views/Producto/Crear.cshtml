@@ -3,5 +3,85 @@
     ViewBag.Title = "Crear";
 }
 
-<h2>Crear</h2>
+<h2>Crear Producto</h2>
+<form class="spaceSite">
+    <div class="row offset-md-1">
+        <label for="codigo" class="col-sm-2 col-form-label textAlignelabel">Código</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="codigo">
+        </div>
 
+    </div>
+
+    <div class="row offset-md-1 paddingRowTop">
+        <label for="Nombre" class="col-sm-2 col-form-label textAlignelabel">Nombre</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="Nombre">
+        </div>
+    </div>
+
+    <div class="row offset-md-1 paddingRowTop">
+        <label for="Precio" class="col-sm-2 col-form-label textAlignelabel">Precio</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="Precio">
+        </div>
+        <label for="imagen" class="col-sm-2 col-form-label textAlignelabel">imagen producto</label>
+        <div class="col-sm-4">
+            <input type="file" class="form-control" id="imagen">
+        </div>
+    </div>
+
+    <div class="row offset-md-1 paddingRowTop">
+        <label for="Marca" class="col-sm-2 col-form-label textAlignelabel">Marca</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="Marca">
+        </div>
+    </div>
+
+    <div class="row offset-md-1 paddingRowTop">
+        <label for="descripcion" class="col-sm-2 col-form-label textAlignelabel">Descripción</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="descripcion">
+        </div>
+    </div>
+
+    <div class="row offset-md-1 paddingRowTop">
+
+        <label for="tipoDeDocumento" class="col-sm-2 col-form-label textAlignelabel">Promoción</label>
+        <div class="col-sm-4">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="1">SIN-PROMOCIÓN</option>
+                <option value="2">CON-PROMOCIÓN</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="row offset-md-1 paddingRowTop">
+
+        <label for="tipoDeDocumento" class="col-sm-2 col-form-label textAlignelabel">Categoria</label>
+        <div class="col-sm-4">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija una opción</option>
+                <option value="1">Despensa</option>
+                <option value="2">Lacteos</option>
+                <option value="3">Carnicos</option>
+                <option value="4">Frutas y verduras</option>
+                <option value="5">Bebidas</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="row spaceSite row offset-md-4 ">
+
+        <div class="d-grid gap-2 col-4 ">
+            <button class="btn btn-primary" type="button">Guardar Producto</button>
+        </div>
+        <div class="d-grid  col-1 d-md-block ">
+            <button class="btn btn-primary" type="button">Limpiar</button>
+        </div>
+    </div>
+
+
+</form>
