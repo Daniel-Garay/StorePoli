@@ -164,26 +164,123 @@
 
 </div>
 
+<div class="row spaceSite" id="zonaBebidas" style="display:none">
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Cervezas</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Gaseosas</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Agua con Gas</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Jugos</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row spaceSite" id="zonaFrutas" style="display:none">
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Mango</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Platano</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Lechuga</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/1_Banner 1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Cebolla</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
 <script>
     function Limpiar() {
         document.getElementById("zonaLacteos").style.display = "none";
         document.getElementById("zonaCarnes").style.display = "none";
-
+        document.getElementById("zonaBebidas").style.display = "none";
+        document.getElementById("zonaFrutas").style.display = "none";
     }
 
     function MostrarProductos(opcion) {
         Limpiar();
 
-
+        
         switch (opcion) {
             case 'Carnicos':
                 document.getElementById("zonaCarnes").style.display = "flex"
                 break;
             case 'Bebidas':
-
+                document.getElementById("zonaBebidas").style.display = "flex"
                 break;
             case 'Frutas':
-
+                document.getElementById("zonaFrutas").style.display = "flex"
                 break;
             default:
                 document.getElementById("zonaLacteos").style.display = "flex"
