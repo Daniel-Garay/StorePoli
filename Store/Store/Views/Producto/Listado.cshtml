@@ -15,7 +15,244 @@
     }
 }
 
+<style>
+    li {
+        cursor: pointer;
+    }
+</style>
+
 <h2 id="infoBienvenida">Bienvenido Administador</h2>
+
+<div class="row spaceSite">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item nav-link" onclick="MostrarProductos('Lacteos')">
+                        Lacteos
+                    </li>
+                    <li class="nav-item nav-link" onclick="MostrarProductos('Carnicos')">
+                        Carnicos
+                    </li>
+                    <li class="nav-item nav-link" onclick="MostrarProductos('Bebidas')">
+                        Bebidas
+                    </li>
+                    <li class="nav-item nav-link" onclick="MostrarProductos('Frutas')">
+                        Frutas y verduras
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="row spaceSite" id="zonaLacteos">
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Lacteos/YogurthAlpina.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 20.750</h5>
+                <p class="card-text">Yogurt Melocoton ALPINA 1750 ml</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Lacteos/LecheEntera.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 23.900</h5>
+                <p class="card-text">Leche Entera Six 6000 ml</p>
+                @if (!isAdmin)
+                {
+                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                }
+                else
+                {
+                    <a href="#" class="btn btn-primary">Editar producto</a>
+                }
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Lacteos/LecheDeslactosada.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 29.950</h5>
+                <p class="card-text">Leche Deslactosada 6000 ml</p>
+                @if (!isAdmin)
+                {
+                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                }
+                else
+                {
+                    <a href="#" class="btn btn-primary">Editar producto</a>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Lacteos/QuesoDobleCrema.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 12.950</h5>
+                <p class="card-text">Queso Doble Crema 249 gr</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="row spaceSite" id="zonaCarnes" style="display:none">
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Carnicos/PostaSelecto.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 17.250</h5>
+                <p class="card-text">Posta Selecto</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Carnicos/CarneCerdo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 10.750</h5>
+                <p class="card-text">Carne De Cerdo Económica</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Carnicos/nuggetsPollo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 7.200</h5>
+                <p class="card-text">NUGGETS DE POLLO APANADOS</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Carnicos/Pescado.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 59.900</h5>
+                <p class="card-text">Filete de Salmón 450 gr</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row spaceSite" id="zonaBebidas" style="display:none">
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Bebidas/cervezas.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 16.450</h5>
+                <p class="card-text">Cerveza Lata Sixpack AGUILA 1980 ml</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Bebidas/gaseosas.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 14.600</h5>
+                <p class="card-text">Gaseosa Original COCA COLA 6000 ml</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Bebidas/AguaConGas.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 15.150</h5>
+                <p class="card-text">Agua Con Gas MANANTIAL 3600 ml</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Bebidas/jugos.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 7.990</h5>
+                <p class="card-text">Jugo Fresh Frutas Cítricas DEL VALLE 5000 ml</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row spaceSite" id="zonaFrutas" style="display:none">
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Frutas/mango.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 1.990</h5>
+                <p class="card-text">Mango Maduro 1 und</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Frutas/platano.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> $ 1.560</h5>
+                <p class="card-text">Platano Maduro Und 1 und</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Frutas/lechuga.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 2.890</h5>
+                <p class="card-text">LECHUGA CRESPA BOLSA 200 gr</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 px-2">
+        <div class="card" style="width: 18rem;">
+            <img src="~/Content/img/ZonaProductos/Frutas/cebolla.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">$ 1.030</h5>
+                <p class="card-text">Cebolla Blanca 1 und</p>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
 <script>
     var url = new URL(window.location.href);
@@ -23,6 +260,32 @@
     if (isAdmin === "false") {
         document.getElementById("infoBienvenida").innerHTML = "Bienvenido usuario";
     }
+
+    function Limpiar() {
+        document.getElementById("zonaLacteos").style.display = "none";
+        document.getElementById("zonaCarnes").style.display = "none";
+        document.getElementById("zonaBebidas").style.display = "none";
+        document.getElementById("zonaFrutas").style.display = "none";
+    }
+
+    function MostrarProductos(opcion) {
+        Limpiar();
+
+
+        switch (opcion) {
+            case 'Carnicos':
+                document.getElementById("zonaCarnes").style.display = "flex"
+                break;
+            case 'Bebidas':
+                document.getElementById("zonaBebidas").style.display = "flex"
+                break;
+            case 'Frutas':
+                document.getElementById("zonaFrutas").style.display = "flex"
+                break;
+            default:
+                document.getElementById("zonaLacteos").style.display = "flex"
+        }
+
+
+    }
 </script>
-
-
