@@ -6,6 +6,10 @@
 
 <h2>Listado de usuarios</h2>
 
+<div class="row spaceSite row offset-md-10 col-md-2">
+    <button class="btn btn-primary" type="button" onclick="CrearUsuario()">Crear usuario</button>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -44,7 +48,7 @@
             <th scope="row">3</th>
             <td>fat</td>
             <td>fat</td>
-            <td>twitter</td>    
+            <td>twitter</td>
             <td>
                 <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
                     <i class="bi bi-pencil-square"></i>
@@ -54,3 +58,8 @@
     </tbody>
 </table>
 
+<script>
+    function CrearUsuario() {
+        window.location.href = window.location.protocol + "//" + window.location.host + "/Usuarios/Detalle?isAdmin=true&edit=false";
+    }
+</script>

@@ -14,5 +14,10 @@ namespace Store.Controllers
             return View();
         }
 
-  }
+        public ActionResult Listado()
+        {
+            return View();
+        }
+
+    }
 }

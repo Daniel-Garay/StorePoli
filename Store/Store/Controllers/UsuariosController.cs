@@ -24,10 +24,5 @@ namespace Store.Controllers
         {
             return View();
         }
-
-        public ActionResult Bienvenida()
-        {
-            return View();
-        }
     }
 }
