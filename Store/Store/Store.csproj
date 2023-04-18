@@ -148,6 +148,22 @@
     <Content Include="Content\img\1_Banner 1.jpg" />
     <Content Include="Content\img\1_Banner 2.jpg" />
     <Content Include="Content\img\1_Banner 3.jpg" />
+    <Content Include="Content\img\ZonaProductos\Bebidas\AguaConGas.jpg" />
+    <Content Include="Content\img\ZonaProductos\Bebidas\cervezas.jpg" />
+    <Content Include="Content\img\ZonaProductos\Bebidas\gaseosas.jpg" />
+    <Content Include="Content\img\ZonaProductos\Bebidas\jugos.jpg" />
+    <Content Include="Content\img\ZonaProductos\Carnicos\CarneCerdo.jpg" />
+    <Content Include="Content\img\ZonaProductos\Carnicos\nuggetsPollo.jpg" />
+    <Content Include="Content\img\ZonaProductos\Carnicos\Pescado.jpg" />
+    <Content Include="Content\img\ZonaProductos\Carnicos\PostaSelecto.jpg" />
+    <Content Include="Content\img\ZonaProductos\Frutas\cebolla.jpg" />
+    <Content Include="Content\img\ZonaProductos\Frutas\lechuga.jpg" />
+    <Content Include="Content\img\ZonaProductos\Frutas\mango.jpg" />
+    <Content Include="Content\img\ZonaProductos\Frutas\platano.jpg" />
+    <Content Include="Content\img\ZonaProductos\Lacteos\LecheDeslactosada.jpg" />
+    <Content Include="Content\img\ZonaProductos\Lacteos\LecheEntera.jpg" />
+    <Content Include="Content\img\ZonaProductos\Lacteos\QuesoDobleCrema.jpg" />
+    <Content Include="Content\img\ZonaProductos\Lacteos\YogurthAlpina.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -214,10 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\ZonaProductos\Bebidas\" />
-    <Folder Include="Content\img\ZonaProductos\Carnicos\" />
-    <Folder Include="Content\img\ZonaProductos\Frutas\" />
-    <Folder Include="Content\img\ZonaProductos\Lacteos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
