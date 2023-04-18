@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Listado de usuarios</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Primer nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nombre usuario</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Pepito</td>
+            <td>pepito@gmail.com</td>
+            <td>pepitoPerez</td>
+            <td>
+                <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>fat</td>
+            <td>Thornton</td>
+            <td>
+                <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>fat</td>
+            <td>fat</td>
+            <td>twitter</td>    
+            <td>
+                <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

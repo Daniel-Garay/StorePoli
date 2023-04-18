@@ -9,10 +9,25 @@ namespace Store.Controllers
     public class UsuariosController : Controller
     {
         // GET: Usuarios
-        public ActionResult Crear()
+
+        public ActionResult Listado()
         {
             return View();
         }
 
-  }
+        public ActionResult Detalle()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Bienvenida()
+        {
+            return View();
+        }
+    }
 }

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Informacio";
+    bool isAdmin = Convert.ToBoolean(Request.Params["isAdmin"]);
+    if (isAdmin)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+
+
+    }
+}
+
+<h2 id="infoBienvenida">Bienvenido Administador</h2>
+
+<script>
+    var url = new URL(window.location.href);
+    var isAdmin = url.searchParams.get("isAdmin");
+    if (isAdmin === "false") {
+        document.getElementById("infoBienvenida").innerHTML = "Bienvenido usuario";
+    }
+</script>
+
+

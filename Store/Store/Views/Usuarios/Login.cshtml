@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<form class="spaceSite">
+    <div class="row offset-md-4">
+        <label for="email" class="col-sm-4 col-form-label textAlignelabel">Ingrese por favor la información</label>
+    </div>
+    <div class="row offset-md-3 paddingRowTop">
+        <label for="email" class="col-sm-2 col-form-label textAlignelabel">Correo</label>
+        <div class="col-sm-4">
+            <input type="email" class="form-control" id="email">
+        </div>
+
+    </div>
+
+    <div class="row offset-md-3 paddingRowTop">
+        <label for="password" class="col-sm-2 col-form-label textAlignelabel">Contraseña</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="password">
+        </div>
+    </div>
+    <div class="row offset-md-5 form-check">
+        <div class="col-sm-4">
+            <input class="form-check-input" type="checkbox" value="" id="isAdmin">
+            <label class="form-check-label" for="flexCheckDefault">
+                ¿Es Administrador?
+            </label>
+        </div>
+
+    </div>
+
+    <div class="row offset-md-5 paddingRowTop">
+        <div class="col-sm-4">
+            <button class="btn btn-primary" type="button" onclick="Login()">Iniciar sesión</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function Login() {
+        if (document.getElementById("isAdmin").checked) { // es admin
+            window.location.href = window.location.protocol + "//" + window.location.host + "/Usuarios/Bienvenida?isAdmin=true";
+        } else {
+            window.location.href = window.location.protocol + "//" + window.location.host + "/Usuarios/Bienvenida?isAdmin=false";
+        }
+    }
+</script>

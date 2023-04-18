@@ -1,14 +1,21 @@
 ﻿
 @{
     ViewBag.Title = "Crear";
+    bool isAdmin = Convert.ToBoolean(Request.Params["isAdmin"]);
+    if (isAdmin)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+
+
+    }
 }
 
-<h2 class="spaceSite">Crear usuario</h2>
-
-
-@*<div class="row spaceSite offset-md-2">
-    <input type="file" />
-</div>*@
+<h2 class="spaceSite" id="mensaje">Crear usuario</h2>
 
 <form class="spaceSite">
     <div class="row offset-md-2">
@@ -53,7 +60,7 @@
 
         <label for="email" class="col-sm-2 col-form-label textAlignelabel">Email</label>
         <div class="col-sm-4">
-            <input type="email" class="form-control" id="email">
+            <input disabled type="email" class="form-control" id="email">
         </div>
     </div>
 
@@ -65,7 +72,7 @@
 
         <label for="tipoDeDocumento" class="col-sm-2 col-form-label textAlignelabel">Tipo de documento</label>
         <div class="col-sm-4">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" id="tipoDocumento">
                 <option selected>Elija una opción</option>
                 <option value="1">Cedula</option>
                 <option value="2">Pasaporte</option>
@@ -78,7 +85,7 @@
 
         <label for="Genero" class="col-sm-2 col-form-label textAlignelabel">Genero</label>
         <div class="col-sm-3">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" id="genero">
                 <option selected>Elija una opción</option>
                 <option value="1">Masculino</option>
                 <option value="2">Femenino</option>
@@ -95,7 +102,7 @@
     <div class="row offset-md-2 paddingRowTop">
         <label for="usuario" class="col-sm-2 col-form-label textAlignelabel">Nombre de usuario</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" id="usuario">
+            <input disabled type="text" class="form-control" id="usuario">
         </div>
 
         <label for="contrasena" class="col-sm-2 col-form-label textAlignelabel">Contraseña</label>
@@ -112,12 +119,9 @@
 
     </div>
 
-
-
-
-    <div class="row offset-md-6  spaceSite">
+    <div class="row offset-md-4  spaceSite">
         <div class="col-md-2">
-            <button type="button" class="btn btn-success btn-lg">Guardar</button>
+            <button type="button" class="btn btn-success btn-lg" id="guardar">Guardar</button>
         </div>
 
         <div class="col-md-2">
@@ -125,9 +129,42 @@
         </div>
 
     </div>
-
-
-
-
 </form>
+<script>
+    var url = new URL(window.location.href);
+    var isEdit = url.searchParams.get("edit");
+    if (isEdit ==="true") {
+        
+        document.getElementById("mensaje").innerHTML = "Editar usuario";
+        document.getElementById("PrimerNombre").value = "Pepito"
+        document.getElementById("celular").value = "310642631";
+        document.getElementById("SegundoNombre").value = "Olaya";
+        document.getElementById("direccion").value = "Calla falsa 123";
+        document.getElementById("PrimerApellido").value = "Perez";
+        document.getElementById("TelFijo").value = "601578643";
+        document.getElementById("SegundoApellido").value = "Farolito";
+        document.getElementById("email").value = "pepito@gmail.com";
+        document.getElementById("document").value = "54632356";
+        document.getElementById("tipoDocumento").value = "1"
+        document.getElementById("genero").value = "1"
+
+        var date = new Date();
+        var currentDate = date.toISOString().substring(0, 10);
+        document.getElementById('fechaDeNacimiento').value = currentDate;
+
+
+        document.getElementById("usuario").value = "pepitoPerez";
+        document.getElementById("contrasena").value = "12345";
+        document.getElementById("confirmarcontrasena").value = "12345";
+
+
+        document.getElementById("guardar").innerHTML = "Actualizar";
+    } else {
+        var email = document.getElementById("email");
+        var usuario = document.getElementById("usuario");
+        email.disabled = false;
+        usuario.disabled = false;
+    }
+
+</script>
 
