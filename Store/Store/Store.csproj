@@ -214,6 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\ZonaProductos\Bebidas\" />
+    <Folder Include="Content\img\ZonaProductos\Carnicos\" />
+    <Folder Include="Content\img\ZonaProductos\Frutas\" />
+    <Folder Include="Content\img\ZonaProductos\Lacteos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
