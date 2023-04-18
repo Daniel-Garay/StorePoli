@@ -17,6 +17,10 @@
 
 <h2 class="spaceSite" id="mensaje">Crear usuario</h2>
 
+<div class="alert alert-success" role="alert" id="alertUsuario" style="display:none">
+    Usuario guardado correctamente
+</div>
+
 <form class="spaceSite">
     <div class="row offset-md-2">
         <label for="PrimerNombre" class="col-sm-2 col-form-label textAlignelabel">Primer nombre</label>
@@ -121,11 +125,11 @@
 
     <div class="row offset-md-4  spaceSite">
         <div class="col-md-2">
-            <button type="button" class="btn btn-success btn-lg" id="guardar">Guardar</button>
+            <button type="button" class="btn btn-success btn-lg" id="guardar" onclick="Guardar()">Guardar</button>
         </div>
 
         <div class="col-md-2">
-            <button type="button" class="btn btn-danger btn-lg">Cancelar</button>
+            <button type="button" class="btn btn-danger btn-lg" onclick="Cancelar()">Cancelar</button>
         </div>
 
     </div>
@@ -133,8 +137,10 @@
 <script>
     var url = new URL(window.location.href);
     var isEdit = url.searchParams.get("edit");
-    if (isEdit ==="true") {
-        
+    var isAdmin = url.searchParams.get("isAdmin");
+
+    if (isEdit === "true") {
+
         document.getElementById("mensaje").innerHTML = "Editar usuario";
         document.getElementById("PrimerNombre").value = "Pepito"
         document.getElementById("celular").value = "310642631";
@@ -166,5 +172,21 @@
         usuario.disabled = false;
     }
 
+    function Cancelar() {
+        if (isAdmin === "true") {
+            window.location.href = window.location.protocol + "//" + window.location.host + "/Usuarios/Listado";
+        }
+        else {
+            window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Listado?isAdmin=false";
+        }
+    }
+
+    function Guardar() {
+        window.scrollTo(pageXOffset, 0);
+        document.getElementById("alertUsuario").style.display = "flex";
+        setTimeout(() => {
+            document.getElementById("alertUsuario").style.display = "none";
+        }, 2000);
+    }
 </script>
 

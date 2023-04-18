@@ -223,13 +223,17 @@
     <Content Include="Views\Usuarios\Detalle.cshtml" />
     <Content Include="Views\Producto\Crear.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
-    <Content Include="Views\Usuarios\Bienvenida.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutUsuario.cshtml" />
     <Content Include="Views\Usuarios\Listado.cshtml" />
+    <Content Include="Views\Producto\Listado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\Productos\Bebidas\" />
+    <Folder Include="Content\img\Productos\Carnicos\" />
+    <Folder Include="Content\img\Productos\Frutas\" />
+    <Folder Include="Content\img\Productos\Lacteos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
