@@ -19,5 +19,10 @@ namespace Store.Controllers
             return View();
         }
 
+        public ActionResult Detalle()
+        {
+            return View();
+        }
+
     }
 }

@@ -41,9 +41,9 @@
 <script>
     function Login() {
         if (document.getElementById("isAdmin").checked) { // es admin
-            window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Listado?isAdmin=true";
+            window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Listado?isAdmin=true&isLogued=true";
         } else {
-            window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Listado?isAdmin=false";
+            window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Listado?isAdmin=false&isLogued=true";
         }
     }
 </script>

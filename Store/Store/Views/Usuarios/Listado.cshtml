@@ -10,6 +10,24 @@
     <button class="btn btn-primary" type="button" onclick="CrearUsuario()">Crear usuario</button>
 </div>
 
+<div class="modal" tabindex="-1" id="modalEliminarUsuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Desea eliminar el usuario?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">si</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +35,9 @@
             <th scope="col">Primer nombre</th>
             <th scope="col">Email</th>
             <th scope="col">Nombre usuario</th>
+            <th scope="col">Rol</th>
             <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
         </tr>
     </thead>
     <tbody>
@@ -26,9 +46,16 @@
             <td>Pepito</td>
             <td>pepito@gmail.com</td>
             <td>pepitoPerez</td>
+            <td>Empleado</td>
             <td>
                 <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
                     <i class="bi bi-pencil-square"></i>
+                </a>
+
+            </td>
+            <td>
+                <a href="#" onclick="EliminarUsuario()">
+                    <i class="bi bi-trash"></i>
                 </a>
 
             </td>
@@ -38,10 +65,17 @@
             <td>Jacob</td>
             <td>fat</td>
             <td>Thornton</td>
+            <td>Cliente</td>
             <td>
                 <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
                     <i class="bi bi-pencil-square"></i>
                 </a>
+            </td>
+            <td>
+                <a  href="#" onclick="EliminarUsuario()">
+                    <i class="bi bi-trash"></i>
+                </a>
+
             </td>
         </tr>
         <tr>
@@ -49,10 +83,18 @@
             <td>fat</td>
             <td>fat</td>
             <td>twitter</td>
+            <td>Cliente</td>
+
             <td>
                 <a href="~/Usuarios/Detalle?isAdmin=true&edit=true">
                     <i class="bi bi-pencil-square"></i>
                 </a>
+            </td>
+            <td>
+                <a  href="#" onclick="EliminarUsuario()">
+                    <i class="bi bi-trash"></i>
+                </a>
+
             </td>
         </tr>
     </tbody>
@@ -61,5 +103,10 @@
 <script>
     function CrearUsuario() {
         window.location.href = window.location.protocol + "//" + window.location.host + "/Usuarios/Detalle?isAdmin=true&edit=false";
+    }
+
+    function EliminarUsuario() {
+        var myModal = new bootstrap.Modal(document.getElementById('modalEliminarUsuario'))
+        myModal.show();
     }
 </script>

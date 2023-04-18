@@ -195,6 +195,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -227,13 +228,10 @@
     <Content Include="Views\Shared\_LayoutUsuario.cshtml" />
     <Content Include="Views\Usuarios\Listado.cshtml" />
     <Content Include="Views\Producto\Listado.cshtml" />
+    <Content Include="Views\Producto\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\Productos\Bebidas\" />
-    <Folder Include="Content\img\Productos\Carnicos\" />
-    <Folder Include="Content\img\Productos\Frutas\" />
-    <Folder Include="Content\img\Productos\Lacteos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

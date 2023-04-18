@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h2 id="mensaje">Comprar Producto</h2>
+
+<div class="alert alert-success" role="alert" id="alertUsuario" style="display:none">
+    Producto agregado al carrito correctamente
+</div>
+
+<form class="spaceSite">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row ">
+                <label for="codigo" class="col-sm-6 col-form-label textAlignelabel">Código</label>
+                <div class="col-sm-6">
+                    <input disabled type="text" class="form-control" id="codigo">
+                </div>
+
+            </div>
+
+            <div class="row  paddingRowTop">
+                <label for="Nombre" class="col-sm-6 col-form-label textAlignelabel">Nombre</label>
+                <div class="col-sm-6">
+                    <input disabled type="text" class="form-control" id="Nombre">
+                </div>
+            </div>
+
+            <div class="row  paddingRowTop">
+                <label for="Precio" class="col-sm-6 col-form-label textAlignelabel">Precio</label>
+                <div class="col-sm-6">
+                    <input disabled type="text" class="form-control" id="Precio">
+                </div>
+
+            </div>
+
+            <div class="row  paddingRowTop">
+                <label for="Marca" class="col-sm-6 col-form-label textAlignelabel">Marca</label>
+                <div class="col-sm-6">
+                    <input disabled type="text" class="form-control" id="Marca">
+                </div>
+            </div>
+
+            <div class="row  paddingRowTop">
+                <label for="descripcion" class="col-sm-6 col-form-label textAlignelabel">Descripción</label>
+                <div class="col-sm-6">
+                    <input disabled type="text" class="form-control" id="descripcion">
+                </div>
+            </div>
+
+            <div class="row  paddingRowTop">
+
+                <label for="promocion" class="col-sm-6 col-form-label textAlignelabel">Promoción</label>
+                <div class="col-sm-6">
+                    <select disabled class="form-select" aria-label="Default select example" id="promocion">
+                        <option selected>Elija una opción</option>
+                        <option value="1">SIN-PROMOCIÓN</option>
+                        <option value="2">CON-PROMOCIÓN</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row  paddingRowTop">
+
+                <label for="categoria" class="col-sm-6 col-form-label textAlignelabel">Categoria</label>
+                <div class="col-sm-6">
+                    <select disabled class="form-select" aria-label="Default select example" id="categoria">
+                        <option selected>Elija una opción</option>
+                        <option value="1">Despensa</option>
+                        <option value="2">Lacteos</option>
+                        <option value="3">Carnicos</option>
+                        <option value="4">Frutas y verduras</option>
+                        <option value="5">Bebidas</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row  paddingRowTop">
+                <label for="cantidad" class="col-sm-6 col-form-label textAlignelabel">Cantidad</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="cantidad">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <img src="~/Content/img/ZonaProductos/Lacteos/LecheDeslactosada.jpg" width="300" height="300" />
+        </div>
+    </div>
+   
+    <div class="row spaceSite row offset-md-4 ">
+
+        <div class="d-grid gap-2 col-4 ">
+            <button type="button" class="btn btn-success btn-lg" id="guardar" onclick="Guardar()">Agregar al carrito</button>
+        </div>
+        <div class="d-grid  col-1 d-md-block ">
+            <button type="button" class="btn btn-danger btn-lg" onclick="Cancelar()">Cancelar</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    
+    document.getElementById("codigo").value = "0002030";
+    document.getElementById("Nombre").value = "Leche deslactosada";
+    document.getElementById("Precio").value = "12.000";
+    document.getElementById("Marca").value = "Alqueria";
+    document.getElementById("descripcion").value = "Leche super grande";
+    document.getElementById("promocion").value = "1";
+    document.getElementById("categoria").value = "1";
+
+
+    function Guardar() {
+        window.scrollTo(pageXOffset, 0);
+        document.getElementById("alertUsuario").style.display = "flex";
+        setTimeout(() => {
+            document.getElementById("alertUsuario").style.display = "none";
+        }, 4000);
+    }
+
+    function Cancelar() {
+        window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Listado?isAdmin=false&isLogued=true";
+
+    }
+
+</script>

@@ -2,13 +2,21 @@
 @{
     ViewBag.Title = "Listado de productos";
     bool isAdmin = Convert.ToBoolean(Request.Params["isAdmin"]);
-    if (isAdmin)
+    bool isLogued = Convert.ToBoolean(Request.Params["isLogued"]);
+    if (!isLogued)
     {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
     else
     {
-        Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+        if (isAdmin)
+        {
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+        }
     }
 }
 
@@ -19,6 +27,38 @@
 </style>
 
 <h2 id="infoBienvenida">Bienvenido Administador</h2>
+
+@if (!isLogued)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+    if (isAdmin)
+    {
+        <div class="row spaceSite row offset-md-10 col-md-2">
+            <button class="btn btn-primary" type="button" onclick="CrearProducto()">Crear producto</button>
+        </div>
+    }
+}
+
+<div class="modal" tabindex="-1" id="modalEliminarProducto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Desea eliminar el producto?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">si</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row spaceSite">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,15 +90,22 @@
             <div class="card-body">
                 <h5 class="card-title">$ 20.750</h5>
                 <p class="card-text">Yogurt Melocoton ALPINA 1750 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
-
             </div>
         </div>
 
@@ -69,13 +116,22 @@
             <div class="card-body">
                 <h5 class="card-title">$ 23.900</h5>
                 <p class="card-text">Leche Entera Six 6000 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+
+                    }
                 }
 
             </div>
@@ -88,13 +144,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 29.950</h5>
                 <p class="card-text">Leche Deslactosada 6000 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -106,13 +170,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 12.950</h5>
                 <p class="card-text">Queso Doble Crema 249 gr</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -129,13 +201,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 17.250</h5>
                 <p class="card-text">Posta Selecto</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -147,13 +227,22 @@
             <div class="card-body">
                 <h5 class="card-title">$ 10.750</h5>
                 <p class="card-text">Carne De Cerdo Económica</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+
+                    }
                 }
             </div>
         </div>
@@ -165,13 +254,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 7.200</h5>
                 <p class="card-text">NUGGETS DE POLLO APANADOS</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -183,13 +280,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 59.900</h5>
                 <p class="card-text">Filete de Salmón 450 gr</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -205,13 +310,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 16.450</h5>
                 <p class="card-text">Cerveza Lata Sixpack AGUILA 1980 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -223,13 +336,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 14.600</h5>
                 <p class="card-text">Gaseosa Original COCA COLA 6000 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -241,13 +362,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 15.150</h5>
                 <p class="card-text">Agua Con Gas MANANTIAL 3600 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -259,13 +388,22 @@
             <div class="card-body">
                 <h5 class="card-title">$ 7.990</h5>
                 <p class="card-text">Jugo Fresh Frutas Cítricas DEL VALLE 5000 ml</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -281,13 +419,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 1.990</h5>
                 <p class="card-text">Mango Maduro 1 und</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -299,13 +445,21 @@
             <div class="card-body">
                 <h5 class="card-title"> $ 1.560</h5>
                 <p class="card-text">Platano Maduro Und 1 und</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -317,13 +471,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 2.890</h5>
                 <p class="card-text">LECHUGA CRESPA BOLSA 200 gr</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -335,13 +497,21 @@
             <div class="card-body">
                 <h5 class="card-title">$ 1.030</h5>
                 <p class="card-text">Cebolla Blanca 1 und</p>
-                @if (!isAdmin)
+                @if (!isLogued)
                 {
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="~/Usuarios/Login" class="btn btn-primary">Agregar al carrito</a>
                 }
                 else
                 {
-                    <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar producto</a>
+                    if (!isAdmin)
+                    {
+                        <a href="~/Producto/Detalle" class="btn btn-primary">Detalle</a>
+                    }
+                    else
+                    {
+                        <a href="~/Producto/Crear?isEdit=true" class="btn btn-primary">Editar</a>
+                        <a href="#" onclick="EliminarProducto();" class="btn btn-danger">Eliminar</a>
+                    }
                 }
             </div>
         </div>
@@ -383,5 +553,14 @@
         }
 
 
+    }
+
+    function CrearProducto() {
+        window.location.href = window.location.protocol + "//" + window.location.host + "/Producto/Crear?isEdit=false";
+    }
+
+    function EliminarProducto() {
+        var myModal = new bootstrap.Modal(document.getElementById('modalEliminarProducto'))
+        myModal.show();
     }
 </script>
