@@ -1,5 +1,9 @@
-﻿.spaceSite {
-    margin-top:46px;
+﻿i {
+    cursor: pointer;
+}
+
+.spaceSite {
+    margin-top: 46px;
 }
 
 .textAlignelabel {

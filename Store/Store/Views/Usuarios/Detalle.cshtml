@@ -71,7 +71,7 @@
     <div class="row offset-md-2 paddingRowTop">
         <label for="document" class="col-sm-2 col-form-label textAlignelabel">Documento</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" id="document">
+            <input disabled type="text" class="form-control" id="document">
         </div>
 
         <label for="tipoDeDocumento" class="col-sm-2 col-form-label textAlignelabel">Tipo de documento</label>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="col-md-2">
-            <button type="button" class="btn btn-danger btn-lg" onclick="Cancelar()">Cancelar</button>
+            <button type="button" class="btn btn-danger btn-lg" onclick="VolverAnterior()">Cancelar</button>
         </div>
 
     </div>
@@ -138,41 +138,53 @@
     var url = new URL(window.location.href);
     var isEdit = url.searchParams.get("edit");
     var isAdmin = url.searchParams.get("isAdmin");
+    var id = url.searchParams.get("id");
 
     if (isEdit === "true") {
 
-        document.getElementById("mensaje").innerHTML = "Editar usuario";
-        document.getElementById("PrimerNombre").value = "Pepito"
-        document.getElementById("celular").value = "310642631";
-        document.getElementById("SegundoNombre").value = "Olaya";
-        document.getElementById("direccion").value = "Calla falsa 123";
-        document.getElementById("PrimerApellido").value = "Perez";
-        document.getElementById("TelFijo").value = "601578643";
-        document.getElementById("SegundoApellido").value = "Farolito";
-        document.getElementById("email").value = "pepito@gmail.com";
-        document.getElementById("document").value = "54632356";
-        document.getElementById("tipoDocumento").value = "1"
-        document.getElementById("genero").value = "1"
+        fetch('/api/ConsultarUsuario/'+id, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(usuario => {
 
-        var date = new Date();
-        var currentDate = date.toISOString().substring(0, 10);
-        document.getElementById('fechaDeNacimiento').value = currentDate;
+                document.getElementById("mensaje").innerHTML = "Editar usuario";
+
+                document.getElementById("PrimerNombre").value = usuario.PrimerNombre;
+                document.getElementById("celular").value = usuario.celular;
+                document.getElementById("SegundoNombre").value = usuario.SegundoNombre;
+                document.getElementById("direccion").value = usuario.direccion;
+                document.getElementById("PrimerApellido").value = usuario.PrimerApellido;
+                document.getElementById("TelFijo").value = usuario.TelFijo;
+                document.getElementById("SegundoApellido").value = usuario.SegundoApellido;
+                document.getElementById("email").value = usuario.email;
+                document.getElementById("document").value = usuario.document;
+                document.getElementById("tipoDocumento").value = usuario.tipoDocumento
+                document.getElementById("genero").value = usuario.genero
+
+                var date = new Date(usuario.fechaDeNacimiento);
+                var currentDate = date.toISOString().substring(0, 10);
+                document.getElementById('fechaDeNacimiento').value = currentDate;
 
 
-        document.getElementById("usuario").value = "pepitoPerez";
-        document.getElementById("contrasena").value = "12345";
-        document.getElementById("confirmarcontrasena").value = "12345";
+                document.getElementById("usuario").value = usuario.usuario;
+                document.getElementById("contrasena").value = usuario.contrasena;
+                document.getElementById("confirmarcontrasena").value = usuario.confirmarcontrasena;
+              
+            });        
 
 
         document.getElementById("guardar").innerHTML = "Actualizar";
     } else {
-        var email = document.getElementById("email");
-        var usuario = document.getElementById("usuario");
-        email.disabled = false;
-        usuario.disabled = false;
+        document.getElementById("email").disabled = false;
+        document.getElementById("usuario").disabled = false;
+        document.getElementById("document").disabled = false;
     }
 
-    function Cancelar() {
+    function VolverAnterior() {
         if (isAdmin === "true") {
             window.location.href = window.location.protocol + "//" + window.location.host + "/Usuarios/Listado";
         }
@@ -182,11 +194,65 @@
     }
 
     function Guardar() {
-        window.scrollTo(pageXOffset, 0);
-        document.getElementById("alertUsuario").style.display = "flex";
-        setTimeout(() => {
-            document.getElementById("alertUsuario").style.display = "none";
-        }, 2000);
+        var data = {
+            id: id,
+            PrimerNombre: document.getElementById("PrimerNombre").value,
+            celular: document.getElementById("celular").value,
+            SegundoNombre: document.getElementById("SegundoNombre").value,
+            direccion: document.getElementById("direccion").value,
+            PrimerApellido: document.getElementById("PrimerApellido").value,
+            TelFijo: document.getElementById("TelFijo").value,
+            SegundoApellido: document.getElementById("SegundoApellido").value,
+            email: document.getElementById("email").value,
+            document: document.getElementById("document").value,
+            tipoDocumento: document.getElementById("tipoDocumento").value,
+            usuario: document.getElementById("usuario").value,
+            contrasena: document.getElementById("contrasena").value,
+            confirmarcontrasena: document.getElementById("confirmarcontrasena").value,
+            fechaDeNacimiento: document.getElementById('fechaDeNacimiento').value,
+            genero: document.getElementById("genero").value
+        };
+        debugger
+        if (isEdit === "true") {           
+
+            fetch('/api/ActualizarUsuario', {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(respuesta => {
+                    if (respuesta.exitoso) {
+                        MostrarMensajeExitoso();
+                        ConsultarUsuarios();
+                    }
+                });
+        }
+        else {
+
+            fetch('/api/CrearUsuario', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(respuesta => {
+                    if (respuesta.exitoso) {
+                        MostrarMensajeExitoso();
+                        ConsultarUsuarios();
+                        VolverAnterior();
+                    }
+                });
+
+        }
+
+      
     }
 </script>
 
