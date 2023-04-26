@@ -9,5 +9,6 @@ namespace Store.Controllers
 {
     public class ProductosRestController : ApiController
     {
+        public int MyProperty { get; set; }
     }
 }
