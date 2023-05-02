@@ -4,29 +4,36 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using static Store.Models.Producto;
 
 namespace Store.Models
 {
     public class Producto
     {
-
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int Precio { get; set; }
+        public string Precio{ get; set; }
+        public string Marca { get; set; }
+        public string Descripcion { get; set; }
+        public string Promocion { get; set; }
+        public string Categoria { get; set; }
+       
 
         public Producto()
         {
 
         }
 
-        public Producto(int Id, string Nombre, int Precio)
+        public Producto(int Id, string Nombre, string Precio, string Marca, string Descripcion, string Promocion, string Categoria)
         {
             this.Id = Id;
             this.Nombre = Nombre;
-            this.Precio = Precio;
-
+            this.Marca = Marca;
+            this.Marca = Precio;
+            this.Descripcion = Descripcion;
+            this.Promocion = Promocion;
+            this.Categoria= Categoria;
         }
+
 
         public List<Producto> ConsultarProductos()
         {
@@ -36,7 +43,7 @@ namespace Store.Models
             using (SqlConnection connection = new SqlConnection(strcon))
             {
 
-                String sql = "SELECT Id,Nombre,Precio FROM Productos";
+                String sql = "SELECT Id,Nombre,Precio, Marca,Descripcion,Promocion,Categoria FROM Productos";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -44,7 +51,8 @@ namespace Store.Models
                     {
                         while (reader.Read())
                         {
-                            Producto producto = new Producto(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
+                          
+                            Producto producto = new Producto(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
                             lista.Add(producto);
                         }
                     }
@@ -52,7 +60,6 @@ namespace Store.Models
             }
             return lista;
         }
-
 
         public Producto ConsultarProducto(int id)
         {
@@ -72,7 +79,11 @@ namespace Store.Models
                         {
                             producto.Id = reader.GetInt32(0);
                             producto.Nombre = reader.GetString(1);
-                            producto.Precio = reader.GetInt32(2);
+                            producto.Precio = reader.GetString(2);
+                            producto.Marca = reader.GetString(3);
+                            producto.Descripcion = reader.GetString(4);
+                            producto.Promocion = reader.GetString(5);
+                            producto.Categoria = reader.GetString(6);
                             
 
                         }
@@ -86,7 +97,7 @@ namespace Store.Models
         {
             int i;
             string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
-            string sqlQuery = $"INSERT INTO Productos VALUES (@Nombre, @Precio)";
+            string sqlQuery = $"INSERT INTO Productos VALUES (@Nombre, @Precio, @Marca, @Descripcion, @Promocion, @Categoria)";
             using (SqlConnection connection = new SqlConnection(strcon))
             {
                 connection.Open();
@@ -94,14 +105,16 @@ namespace Store.Models
 
                 cmd.Parameters.AddWithValue("Nombre", producto.Nombre);
                 cmd.Parameters.AddWithValue("Precio", producto.Precio);
-                
+                cmd.Parameters.AddWithValue("Marca", producto.Marca);
+                cmd.Parameters.AddWithValue("Descripcion", producto.Descripcion);
+                cmd.Parameters.AddWithValue("Promocion", producto.Promocion);
+                cmd.Parameters.AddWithValue("Categoria", producto.Categoria);
+               
                 i = cmd.ExecuteNonQuery();
 
                 connection.Close();
             }
             return i > 0;
-
-
 
         }
 
@@ -109,7 +122,7 @@ namespace Store.Models
         {
             int i;
             string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
-            string sqlQuery = $"UPDATE Productos SET Nombre=@Nombre, Precio=@Precio where id=@id";
+            string sqlQuery = $"UPDATE Productos SET Nombre=@Nombre, Precio=@Precio, Marca=@Marca, Descripcion=@Descripcion, Promocion=@Promocion, Categoria=@Categoria where id=@id";
             using (SqlConnection connection = new SqlConnection(strcon))
             {
                 connection.Open();
@@ -117,7 +130,11 @@ namespace Store.Models
 
                 cmd.Parameters.AddWithValue("Nombre", producto.Nombre);
                 cmd.Parameters.AddWithValue("Precio", producto.Precio);
-                cmd.Parameters.AddWithValue("Id",producto.Id);
+                cmd.Parameters.AddWithValue("Marca", producto.Marca);
+                cmd.Parameters.AddWithValue("Descripcion", producto.Descripcion);
+                cmd.Parameters.AddWithValue("Promocion", producto.Promocion);
+                cmd.Parameters.AddWithValue("Categoria", producto.Categoria);
+                cmd.Parameters.AddWithValue("Id", producto.Id);
 
                 i = cmd.ExecuteNonQuery();
 
@@ -126,6 +143,7 @@ namespace Store.Models
             return i > 0;
 
         }
+
         public bool EliminarProducto(int id)
         {
             int i;
@@ -143,5 +161,4 @@ namespace Store.Models
 
         }
     }
-
 }
