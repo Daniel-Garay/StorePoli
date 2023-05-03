@@ -27,8 +27,8 @@ namespace Store.Models
         {
             this.Id = Id;
             this.Nombre = Nombre;
+            this.Precio = Precio;
             this.Marca = Marca;
-            this.Marca = Precio;
             this.Descripcion = Descripcion;
             this.Promocion = Promocion;
             this.Categoria= Categoria;

@@ -94,7 +94,7 @@ namespace Store.Models
                             usuario.email = reader.GetString(8);
                             usuario.document = reader.GetString(9);
                             usuario.tipoDocumento = reader.GetString(10);
-                            usuario.genero = reader.GetString(11);   
+                            usuario.genero = reader.GetString(11);
                             usuario.usuario = reader.GetString(12);
                             usuario.contrasena = reader.GetString(13);
                             usuario.confirmarcontrasena = reader.GetString(14);
